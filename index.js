@@ -3,7 +3,7 @@ var through = require('through2'),
 		tempWrite = require('temp-write'),
 		PluginError = require('gulp-util').PluginError,
 		cc = require('closurecompiler'),
-		reErrorParse = /^.*:(\d):\W((?:.|\n)*\^)\n(?:.|\n)*(\d)\Werror.*(\d)\Wwarning/;
+		reErrorParse = /^.*:(\d+):\W(.*?)\n(?:.|\n)*(\d+)\Werror.*(\d+)\Wwarning/;
 
 module.exports = function(opts) {
 	function minify(file, encoding, callback) {
