@@ -1,12 +1,15 @@
 'use strict';
-var through = require('through2'),
-		tempWrite = require('temp-write'),
+var tempWrite = require('temp-write'),
 		PluginError = require('gulp-util').PluginError,
 		cc = require('closurecompiler'),
+		transform = require('parallel-transform'),
+		cpus = require('os').cpus().length,
 		reErrorParse = /^.*:(\d+):\W(.*?)\n(?:.|\n)*(\d+)\Werror.*(\d+)\Wwarning/;
 
 module.exports = function(opts) {
-	function minify(file, encoding, callback) {
+	opts = opts || {};
+
+	function minify(file, callback) {
 		if (file.isNull()) {
 			return callback(null, file);
 		}
@@ -40,5 +43,5 @@ module.exports = function(opts) {
 		});
 	}
 
-	return through.obj(minify);
+	return transform(cpus || opts.parallism, minify);
 };
