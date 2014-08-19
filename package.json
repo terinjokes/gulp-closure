@@ -1,7 +1,7 @@
 {
   "name": "gulp-closure",
   "description": "Closure Compiler for gulp and other vinyl streams",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "Terin Stock <terinjokes@gmail.com>",
   "bugs": "https://github.com/terinjokes/gulp-closure/issues",
   "dependencies": {
