@@ -26,7 +26,7 @@
   "repository": "https://github.com/terinjokes/gulp-closure.git",
   "scripts": {
     "test": "tape test/*.js",
-    "lint": "eslint index.js test",
-    "format": "jsfmt -w index.js test"
+    "lint": "eslint index.js lib test",
+    "format": "jsfmt -w index.js lib test"
   }
 }
