@@ -1,10 +1,9 @@
 'use strict';
 var test = require('tape');
 var Vinyl = require('vinyl');
-var gulpCC = require('../');
+var minifer = require('../lib/minifier');
 
-var testContentsInput = 'function errorFunction(error)\n{';
-
+var testContentsInput = '"use strict"; (function(console, first, second) { console.log(first + second) }(5, 10))';
 var testFile1 = new Vinyl({
   cwd: '/home/terin/better-than-contra/',
   base: '/home/terin/better-than-contra/test',
@@ -12,13 +11,13 @@ var testFile1 = new Vinyl({
   contents: new Buffer(testContentsInput)
 });
 
-test('should report an error for bad inputs', function(t) {
+test('should report Error objects', function(t) {
   t.plan(4);
 
-  var stream = gulpCC();
-
-  stream.on('data', function() {
-    t.fail('we shouldn\'t have gotten here');
+  var stream = minifer({}, {
+    compile: function(tempFile, opts, cb) {
+      cb(new Error('test'), null);
+    }
   });
 
   stream.on('error', function(e) {
