@@ -43,5 +43,5 @@ module.exports = function(opts) {
 		});
 	}
 
-	return transform(cpus || opts.parallism, minify);
+	return transform(opts.parallism || cpus, minify);
 };
