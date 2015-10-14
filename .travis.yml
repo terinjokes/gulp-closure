@@ -10,3 +10,4 @@ addons:
       - default-jre
 after_success:
   - npm run coverage
+  - npm run semantic-release
