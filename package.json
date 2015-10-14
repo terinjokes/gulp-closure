@@ -11,7 +11,8 @@
     "temp-write": "^1.0.0"
   },
   "devDependencies": {
-    "argg": "0.0.1",
+    "coveralls": "^2.11.4",
+    "istanbul": "^0.3.22",
     "tape": "^2.14.0",
     "vinyl": "^0.3.2"
   },
@@ -23,6 +24,7 @@
   "main": "index.js",
   "repository": "https://github.com/terinjokes/gulp-closure.git",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "istanbul cover tape test/*.js",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   }
 }
