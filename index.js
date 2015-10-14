@@ -18,28 +18,28 @@ module.exports = function(opts) {
 			return callback(new PluginError('gulp-closure', 'Streaming not supported'));
 		}
 
-		tempWrite(file.contents, function(err, tempFile) {
-			if (err) {
-				return callback(new PluginError('gulp-closure', err, {
-						fileName: file.path,
-						showStack: false
-					}));
-			}
-
+		tempWrite(file.contents).then(function(tempFile) {
 			cc.compile(tempFile, opts, function(err, data) {
 				if (err && !data) {
 					var parsed = reErrorParse.exec(err);
-					return callback(new PluginError('gulp-closure', parsed[2], {
+					callback(new PluginError('gulp-closure', parsed[2], {
 							fileName: file.path,
 							lineNumber: +parsed[1],
 							showStack: false
 						}));
+
+					return;
 				}
 
 				file.contents = new Buffer(data);
 
 				callback(null, file);
 			});
+		})['catch'](function(err) {
+			callback(new PluginError('gulp-closure', err, {
+				fileName: file.path,
+				showStack: false
+			}));
 		});
 	}
 
