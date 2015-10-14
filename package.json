@@ -1,7 +1,6 @@
 {
   "name": "gulp-closure",
   "description": "Closure Compiler for gulp and other vinyl streams",
-  "version": "0.4.0",
   "author": "Terin Stock <terinjokes@gmail.com>",
   "bugs": "https://github.com/terinjokes/gulp-closure/issues",
   "dependencies": {
@@ -13,6 +12,7 @@
   "devDependencies": {
     "coveralls": "^2.11.4",
     "istanbul": "^0.3.22",
+    "semantic-release": "^4.3.5",
     "tape": "^4.2.1",
     "vinyl": "^1.0.0"
   },
@@ -25,9 +25,13 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "repository": "https://github.com/terinjokes/gulp-closure.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terinjokes/gulp-closure.git"
+  },
   "scripts": {
     "test": "istanbul cover tape test/*.js",
-    "coverage": "cat ./coverage/lcov.info | coveralls"
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   }
 }

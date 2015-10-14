@@ -8,5 +8,8 @@ addons:
   apt:
     packages:
       - default-jre
+before_install:
+  - npm install -g npm@latest-2
 after_success:
   - npm run coverage
+  - npm run semantic-release
