@@ -6,7 +6,7 @@ var test = require('tape'),
 		tempWrite = require('temp-write');
 
 test('should minify files', function(t) {
-	t.plan(9);
+	t.plan(8);
 
 	var testContentsInput = '"use strict"; (function(console, first, second) { console.log(first + second) }(5, 10))';
 	var testFile1 = new Vinyl({
@@ -16,9 +16,7 @@ test('should minify files', function(t) {
 		contents: new Buffer(testContentsInput)
 	});
 
-	tempWrite(testContentsInput, function(err, tempFile) {
-		t.error(err);
-
+	tempWrite(testContentsInput).then(function(tempFile) {
 		cc.compile(tempFile, {}, function(err, testContentsExpected) {
 			t.error(err);
 
@@ -38,7 +36,6 @@ test('should minify files', function(t) {
 
 			stream.write(testFile1);
 		});
-	});
-
+	})['catch'](t.error)
 
 });
