@@ -20,6 +20,9 @@
   "keywords": [
     "gulpplugin"
   ],
+  "files": [
+    "index.js"
+  ],
   "license": "MIT",
   "main": "index.js",
   "repository": "https://github.com/terinjokes/gulp-closure.git",
