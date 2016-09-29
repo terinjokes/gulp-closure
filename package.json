@@ -14,7 +14,7 @@
     "istanbul": "^0.4.0",
     "semantic-release": "^4.3.5",
     "tape": "^4.2.1",
-    "vinyl": "^1.0.0"
+    "vinyl": "^2.0.0"
   },
   "homepage": "https://github.com/terinjokes/gulp-closure",
   "keywords": [
