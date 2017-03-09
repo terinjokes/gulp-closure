@@ -4,6 +4,8 @@ gulp-closure
 
 ## Alpha
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/terinjokes/gulp-closure.svg)](https://greenkeeper.io/)
+
 This project is in alpha. The API may change at any time.
 
 ## Installation
